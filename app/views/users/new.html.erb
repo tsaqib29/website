@@ -1,0 +1,5 @@
+<%= form_with(model: @user, local: true) do |f| %>
+  <div class="wrapper">
+     <%= f.email_field :email , id: "search", class:"search input" %> <br />
+     <%= f.submit "yep", class: "submit input" %>
+  </div>

@@ -1,0 +1,27 @@
+<div class="about-main">
+    <div class="masbro">
+        <!-- menampilkan pesan notice -->
+        <% if notice %>
+            <p><%= notice %></p>
+        <% end %>
+
+        <!-- menampilkan pesan alert -->
+        <% if alert %>
+            <p><%= alert %></p>
+        <% end %>
+        
+        <!-- menampilkan form login -->
+        <h1>LOGIN</h1>
+        <%= form_tag controller: :auth, action: :login, local: true do %>   
+            <%= text_field_tag :email, '', placeholder: 'Email', autocomplete: "off" %> <br><br>
+            <%= password_field_tag :password, '', placeholder: 'Password' %> <br><br>
+            <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+            <%= label_tag :remember_me %> 
+            <p><%= link_to "Forgotten Password?", new_password_reset_path %></p>
+            <%= submit_tag 'Login' %> <br>
+            <p>Dont Have Account?<br>
+            <%= link_to 'Sign Up', form_register_path %> &emsp;
+            <a href="/">Back</a></p>
+        <% end %>
+    </div>
+</div>

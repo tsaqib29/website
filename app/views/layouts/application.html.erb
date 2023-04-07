@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Project</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <header>
+        <div class="udin">
+          <div class="well">
+              <h2 class="okey">MyProject</h2>
+          </div>
+            <div class="oyy">
+              <ul>
+                  <li><a href="/">HOME</a></li>
+                  <li><a href="/book/index">LIBRARY</a></li>
+                  <li><a href="/about">ABOUT</a></li>
+                  <li><a href="/service">SERVICE</a></li>
+                  <li><a href="/profile">CONTACT</a></li>
+              </ul>
+            </div>
+            <div class="search">
+                <input class="srch" type="search" name="" placeholder="Type To text">
+                <a href="#"> <button class="btn">Search</button></a>
+            </div>
+        </div>
+    </header>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script> 
+  <%= yield %>
+  </body>

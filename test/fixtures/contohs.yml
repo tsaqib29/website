@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  judul: MyString
+  pengarang: MyText
+  isbn: MyText
+  deskripsi: MyText
+
+two:
+  judul: MyString
+  pengarang: MyText
+  isbn: MyText
+  deskripsi: MyText

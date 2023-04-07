@@ -1,0 +1,2 @@
+module AyoHelper
+end

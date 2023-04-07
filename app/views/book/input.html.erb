@@ -1,0 +1,28 @@
+<div class="main post-index">
+    <div class="container">
+        <h1>Tambah Buku</h1>
+        <%= form_tag("/book/create") do %>
+        <div class="form">
+            <div class="form-body">
+                <label>Judul</label>
+                <input name="judul" required>
+
+                <label>Pengarang</label>
+                <input name="pengarang" required>
+
+                <label>Isbn</label>
+                <input name="isbn" required>
+
+                <label>Deskripsi</label>
+                <textarea name="deskripsi"></textarea>
+                        
+                <label for="kategori">Kategori:</label>
+                <%= select_tag "kategori", options_from_collection_for_select(Category.all, "id", "name") %>             
+                <br>
+                <button type="submit">Simpan</button>
+                <a href="/book/index">Kembali</a>
+            </div>
+        </div>
+        <% end %>
+    </div>
+</div>

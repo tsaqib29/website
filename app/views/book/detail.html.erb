@@ -1,0 +1,16 @@
+<div class="main posts-show">
+    <div class="container">
+        <div class="posts-show-item">
+        <h1>Detail</h1>
+            <p>Name: <%= @data.title %></p>
+            <p>Author: <%= @data.author %></p>
+            <p>No Isbn: <%= @data.isbn %></p>
+            <p>Description: <%= @data.description %></p>
+            <p>Category: <%= @data.category.name %></p>
+        <div class="post-time">
+            <%= @data.created_at %>
+        </div>
+        <a href="/book/index">Kembali</a>
+        </div>
+    </div>
+</div>

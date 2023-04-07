@@ -1,0 +1,35 @@
+<div class="about-main">
+    <div class="container">
+    <h1>Your Library</h1>
+      <p><%= flash[:pesan] %></p>
+      <a href="/book/input">New Book</a> 
+        <table border="1" width="100%" style="border-collapse: collapse;">
+            <tr>
+                <th>No</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>No Isbn</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Action</th>   
+            </tr>
+            <%
+            no=0
+            @data.each do |value| %>
+            <tr>
+                <td><%= no=no+1 %></td>
+                <td><%= value.title %></td>
+                <td><%= value.author %></td>
+                <td><%= value.isbn %></td>
+                <td><%= value.description %></td>
+                <td><%= value.category.name %></td>
+                <td>
+                    <a href="/book/detail/<%= value.id %>">Detail</a> |
+                    <a href="/book/edit/<%= value.id %>">Edit</a> |
+                    <a href="/book/hapus/<%= value.id %>" OnClick="return confirm('Yakin Hapus Data..?')">Delete</a>
+                </td>
+            </tr>
+            <%end%>
+        </table>
+    </div>
+</div>
