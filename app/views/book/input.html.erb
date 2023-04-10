@@ -1,7 +1,11 @@
-<div class="main post-index">
+<div class="about-mail">
     <div class="container">
         <h1>Tambah Buku</h1>
         <%= form_tag("/book/create") do %>
+        <% if flash[:errors] %>
+            <% flash[:errors].each do |eror| %>
+            <% end %>
+        <% end %>
         <div class="form">
             <div class="form-body">
                 <label>Judul</label>

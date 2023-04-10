@@ -182,6 +182,11 @@
     padding: 180px 8% 0;
     color: white;
   }
+
+  .about-mail {
+    padding: 19px 8% 0;
+    color: white;
+  }
   
   .about-main h2 {
     font-size: 64px;

@@ -1,19 +1,28 @@
 class BookController < ApplicationController
+    before_action :user_signed_in?
+    helper_method :current_user
+  
     def index
         @data = Book.all.order(created_at: :desc)
-      end
+    end
     
-      def detail
-        @data = Book.find_by(id: params[:id])
-      end
+    def detail
+      @data = Book.find_by(id: params[:id])
+    end
     
-      def input
-        @data = Book.find_by(id: params[:id])
-      end
+    def input
+      @data = Book.find_by(id: params[:id])
+    end
     
-      def create
-        @data = Book.new(title: params[:judul], author: params[:pengarang], isbn: params[:isbn], description: params[:deskripsi], category_id: params[:kategori])
-        
+    def create
+      @data = Book.new(title: params[:judul], author: params[:pengarang], isbn: params[:isbn], description: params[:deskripsi], category_id: params[:kategori])
+      if @data.valid?
+          @data.save
+          redirect_to book_path(@data)
+      else
+          flash[:errors] = @data.errors.full_messages
+      end
+
         if @data.save
           flash[:pesan] = "Data Berhasil Disimpan !"
         else
