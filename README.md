@@ -1,1 +1,1 @@
-Aplikasi Management Buku..
+Aplikasi Management Buku.
