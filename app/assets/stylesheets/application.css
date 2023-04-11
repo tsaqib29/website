@@ -184,7 +184,7 @@
   }
 
   .about-mail {
-    padding: 19px 8% 0;
+    padding: 15px 8% 0;
     color: white;
   }
   
@@ -219,7 +219,7 @@
   }
   
   .form-body {
-    padding: 30px;
+    padding: 18px;
     color: white;
   }
   
@@ -375,6 +375,7 @@
   opacity: 0.5;
 }
 
+/* navbar ================================ */
 .udin{
   width: 1200px;
   height: 75px;
@@ -477,6 +478,8 @@ ul li a:hover{
   outline: none;
 }
 
+
+/* home ================================ */
 .ih{
   padding: 180px 8% 0;
   color: white;
@@ -508,8 +511,7 @@ ul li a:hover{
   font-size: 18px;
   border-radius: 10px;
   cursor: pointer;
-  transition: .4s ease;
-  
+  transition: .4s ease; 
 }
 
 .ih .cn a{
@@ -547,7 +549,6 @@ ul li a:hover{
   font-size: 22px;
   background-color: #fff;
   border-radius: 10px;
-  /* margin: 2px; */
   padding: 2px;
 }
 
@@ -629,6 +630,8 @@ ul li a:hover{
   color: #ff7200;
 }
 
+
+/* login ================================ */
 .masbro{
   width: 250px;
   background: linear-gradient(to top, rgba(0,0,0,0.8)50%,rgba(0,0,0,0.8)50%);
@@ -656,4 +659,10 @@ ul li a:hover{
 
 .wow h1{
   color: #ff7200;
+}
+
+
+/* book/input ================================ */
+.wiw {
+  color: red;
 }

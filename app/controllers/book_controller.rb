@@ -25,10 +25,12 @@ class BookController < ApplicationController
 
         if @data.save
           flash[:pesan] = "Data Berhasil Disimpan !"
+          redirect_to("/book/index")
         else
           flash[:pesan] = "Data Tidak Berhasil Disimpan !"
+          redirect_to("/book/input")
         end
-        redirect_to("/book/index")
+        
       end  
     
       def edit
@@ -42,9 +44,22 @@ class BookController < ApplicationController
         @data.isbn = params[:isbn]
         @data.description = params[:deskripsi]
         @data.category_id = params[:category_id]
-        @data.save
-        flash[:pesan] = "Data Berhasil Diupdate !"
-        redirect_to("/book/index")
+        
+        if @data.valid?
+          @data.save
+          redirect_to book_path(@data)
+        else
+          flash[:errors] = @data.errors.full_messages
+        end
+        
+        
+        if @data.save
+          flash[:pesan] = "Data Berhasil Diupdate !"
+          redirect_to("/book/index")
+        else
+          flash[:pesan] = "Data Gagal Diupdate !"
+          redirect_to("/book/edit/#{@data.id}")
+        end
       end
     
       def hapus

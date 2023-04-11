@@ -2,31 +2,31 @@
     <div class="container">
         <h1>Tambah Buku</h1>
         <%= form_tag("/book/create") do %>
-        <% if flash[:errors] %>
-            <% flash[:errors].each do |eror| %>
-            <% end %>
-        <% end %>
+        <div class="wiw">
+            <%= flash[:pesan] %>
+        </div>
         <div class="form">
             <div class="form-body">
-                <label>Judul</label>
+                <label>Titlr</label>
                 <input name="judul" required>
 
-                <label>Pengarang</label>
+                <label>Author</label>
                 <input name="pengarang" required>
 
                 <label>Isbn</label>
                 <input name="isbn" required>
 
-                <label>Deskripsi</label>
+                <label>Description</label>
                 <textarea name="deskripsi"></textarea>
                         
-                <label for="kategori">Kategori:</label>
+                <label for="kategori">Category:</label>
                 <%= select_tag "kategori", options_from_collection_for_select(Category.all, "id", "name") %>             
                 <br>
-                <button type="submit">Simpan</button>
-                <a href="/book/index">Kembali</a>
+                <button type="submit">Save</button>
+                <a href="/book/index">Back</a>
             </div>
         </div>
+        
         <% end %>
     </div>
 </div>

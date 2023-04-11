@@ -1,8 +1,11 @@
-<div class="yow">
-    <div class="wow">
+<div class="about-mail">
+    <div class="container">
         <h1>Edit Data</h1>
         <%= form_tag("/book/update/#{@data.id}") do %>
         <div class="form">
+        <div class="wiw">
+            <%= flash[:pesan] %>
+        </div class="form">
             <div class="form-body">
                 <label>Title</label>
                 <input name="judul" value="<%= @data.title %>" required>
@@ -18,7 +21,6 @@
                 
                 <label for="kategori">Category:</label>
                 <%= select_tag "category_id", options_from_collection_for_select(Category.all, "id", "name") %>
-                <option value="<%= @data.isbn %>"></option>
                 <br>
                 <button type="submit">Save</button>
                 <a href="/book/index">Back</a>
