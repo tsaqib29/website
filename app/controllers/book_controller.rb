@@ -15,16 +15,10 @@ class BookController < ApplicationController
     end
     
     def create
-      @data = Book.new(title: params[:judul], author: params[:pengarang], isbn: params[:isbn], description: params[:deskripsi], category_id: params[:kategori])
-      if @data.valid?
-          @data.save
-          redirect_to book_path(@data)
-      else
-          flash[:errors] = @data.errors.full_messages
-      end
-
+      @data = Book.new(title: params[:judul], author: params[:pengarang], isbn: params[:isbn], description: params[:deskripsi], category_id: params[:kategori])      
         if @data.save
           flash[:pesan] = "Data Berhasil Disimpan !"
+        return
           redirect_to("/book/index")
         else
           flash[:pesan] = "Data Tidak Berhasil Disimpan !"
@@ -55,6 +49,7 @@ class BookController < ApplicationController
         
         if @data.save
           flash[:pesan] = "Data Berhasil Diupdate !"
+        return
           redirect_to("/book/index")
         else
           flash[:pesan] = "Data Gagal Diupdate !"
