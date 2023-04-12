@@ -11,21 +11,21 @@ class BookController < ApplicationController
     end
     
     def input
-      @data = Book.find_by(id: params[:id])
+      @data = Book.new
     end
     
     def create
       @data = Book.new(title: params[:judul], author: params[:pengarang], isbn: params[:isbn], description: params[:deskripsi], category_id: params[:kategori])      
         if @data.save
           flash[:pesan] = "Data Berhasil Disimpan !"
-        return
+        
           redirect_to("/book/index")
         else
-          flash[:pesan] = "Data Tidak Berhasil Disimpan !"
-          redirect_to("/book/input")
+          
+          render action: 'input'
         end
-        
       end  
+      
     
       def edit
         @data = Book.find_by(id: params[:id])
