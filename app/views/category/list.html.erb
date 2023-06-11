@@ -1,0 +1,22 @@
+<div class="about-main">
+    <h1>Category List</h1>
+    <p><%= flash[:pesan] %></p>
+    <a href="/category/new">New Category</a>
+    <table border="1" width="100%" style="border-collapse: collapse;">
+        <tr>
+            <th>Category</th>
+            <th>Action</th>
+        </tr>
+        <% @categories.each do |category| %>
+        <tr>
+            <td><%= category.name %></td>
+            <td>
+                <a href="/category/edit/<%= category.id %>">Edit</a>
+                <%= button_to('Delete', "/categories/#{category.id}", method: :delete) %>
+            </td>
+        </tr>
+        <%end%>
+    </table>
+
+    <a href="/book/index">Back</a>
+</div>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :clients
+  resources :posts
   get 'password_resets/new'
   get 'kategori/index'
   get 'book/index'
@@ -10,6 +12,12 @@ Rails.application.routes.draw do
   get '/' => 'home#index'
   get '/book/detail/:id' => 'book#detail'
   get '/book/input' => 'book#input'
+  get '/category/list' => 'category#list'
+  get '/category/edit/:id' => 'category#edit'
+  post '/category/update/:id' => 'category#update'
+  delete '/categories/:id' => 'category#destroy'
+  get '/category/new' => 'category#new'
+  post '/categories/create' => 'category#create'
   post '/book/create' => 'book#create'
   get '/book/edit/:id' => 'book#edit'
   post '/book/update/:id' => 'book#update'

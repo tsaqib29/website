@@ -1,0 +1,15 @@
+<div class="about-main">
+    <h1>New Category</h1>
+    <%= form_tag("/categories/create") do %>
+        <div class="wiw">
+            <%= flash[:pesan] %>
+        </div>
+
+        <label>Name</label>
+        <%= text_field_tag(:name) %>   
+        <br>
+        <button type="submit">Save</button>
+        <a href="/category/list">Back</a>
+    <%end%>
+        
+</div>

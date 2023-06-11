@@ -1,0 +1,15 @@
+<div class="about-main">
+    <h1>Edit Category</h1>
+    <%= form_tag("/category/update/#{@categories.id}") do %>
+        <div class="wiw">
+            <%= flash[:pesan] %>
+        </div>
+
+        <label>Name :</label>
+        <input name="name" value="<%= @categories.name %>" required>  
+        <br>
+        <button type="submit">Save</button>
+        <a href="/category/list">Back</a>
+    <%end%>
+        
+</div>

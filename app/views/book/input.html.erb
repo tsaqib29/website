@@ -5,13 +5,6 @@
         <div class="wiw">
             <%= flash[:pesan] %>
         </div>
-        <% if @data.errors.size > 0 %>
-            <% @data.errors.each do |error| %>
-                <div>
-                    <%= error.full_message %>
-                </div>
-            <% end %>
-         <% end %>
         <div class="form">
             <div class="form-body">
                 <label>Title</label>

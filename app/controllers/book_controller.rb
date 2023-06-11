@@ -3,63 +3,66 @@ class BookController < ApplicationController
     helper_method :current_user
   
     def index
-        @data = Book.all.order(created_at: :desc)
+        @book = Book.all
     end
     
+    def show
+      @book = Book.find_by(id: params[:id])
+    end
+    
+    def new
+      @book = Book.new
+    end
+
     def detail
-      @data = Book.find_by(id: params[:id])
-    end
-    
-    def input
-      @data = Book.new
+      @book = Book.find_by(id: params[:id])
     end
     
     def create
-      @data = Book.new(title: params[:judul], author: params[:pengarang], isbn: params[:isbn], description: params[:deskripsi], category_id: params[:kategori])      
-        if @data.save
+      @book = Book.new(title: params[:judul], author: params[:pengarang], isbn: params[:isbn], description: params[:deskripsi], category_id: params[:kategori])      
+        if @book.save
           flash[:pesan] = "Data Berhasil Disimpan !"
-        
           redirect_to("/book/index")
         else
-          
           render action: 'input'
         end
       end  
       
     
       def edit
-        @data = Book.find_by(id: params[:id])
+        @book = Book.find_by(id: params[:id])
       end
     
       def update
-        @data = Book.find_by(id: params[:id])
-        @data.title = params[:judul]
-        @data.author = params[:pengarang]
-        @data.isbn = params[:isbn]
-        @data.description = params[:deskripsi]
-        @data.category_id = params[:category_id]
+        @book = Book.find_by(id: params[:id])
+        @book.title = params[:judul]
+        @book.author = params[:pengarang]
+        @book.isbn = params[:isbn]
+        @book.description = params[:deskripsi]
+        @book.category_id = params[:category_id]
         
-        if @data.valid?
-          @data.save
-          redirect_to book_path(@data)
+        if @book.valid?
+          @book.save
+          flash[:pesan] = "Data Berhasil Disimpan !"
+          redirect_to("/book/index")
         else
-          flash[:errors] = @data.errors.full_messages
+          render action: 'input'
         end
         
         
-        if @data.save
+        if @book.save
           flash[:pesan] = "Data Berhasil Diupdate !"
         return
           redirect_to("/book/index")
         else
           flash[:pesan] = "Data Gagal Diupdate !"
-          redirect_to("/book/edit/#{@data.id}")
+          redirect_to("/book/edit/#{@book.id}")
         end
       end
     
-      def hapus
-        @data = Book.find_by(id: params[:id])
-        @data.destroy
+      def destroy
+        @book = Book.find_by(id: params[:id])
+        @book.destroy
         flash[:pesan] = "Data Berhasil Dihapus !"
         redirect_to("/book/index")
       end
