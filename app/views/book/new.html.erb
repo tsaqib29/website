@@ -1,12 +1,12 @@
 <div class="about-mail">
     <div class="container">
-        <h1>Edit Data</h1>
-        <%= form_tag("/book/update/#{@book.id}") do %>
-            <div class="form">
-                <div class="wiw">   
-                    <%= flash[:pesan] %>
-                </div>
-                <%= render(partial: "error") %>
+        <h1>Tambah Buku</h1>
+        <%= form_tag("/book/create") do %>
+            <div class="wiw">
+                <%= flash[:pesan] %>
+            </div>
+            <%= render(partial: "error") %>
+                <div class="form">
                     <div class="form-body">
                         <label>Title</label>
                         <%= text_field_tag(:title, @book.title) %>
@@ -19,16 +19,16 @@
 
                         <label>Description</label>
                         <textarea name="description"><%= @book.description %></textarea>
-                        
-                        <label for="kategori">Category:</label>
+                                
+                        <label for="category">Category:</label>
                         <% cats=Category.all.map{|c| [c.name, c.id]} %>
                         <% cats.insert(0, ["-pilih-", nil]) %>
-                        <%= select_tag "category_id", options_for_select(cats, @book.category_id) %>             
+                        <%= select_tag "category", options_for_select(cats, @book.category_id) %>             
                         <br>
                         <button type="submit">Save</button>
                         <a href="/book/index">Back</a>
                     </div>
-            </div>
+                </div>
         <% end %>
     </div>
 </div>

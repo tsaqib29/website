@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :clients
-  resources :posts
+  get '/search', to: "book#search"
+  resources :paginations
   get 'password_resets/new'
   get 'kategori/index'
   get 'book/index'
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/profile' => 'home#profile'
   get '/' => 'home#index'
   get '/book/detail/:id' => 'book#detail'
-  get '/book/input' => 'book#input'
+  get '/book/new' => 'book#new'
   get '/category/list' => 'category#list'
   get '/category/edit/:id' => 'category#edit'
   post '/category/update/:id' => 'category#update'
@@ -22,22 +22,15 @@ Rails.application.routes.draw do
   get '/book/edit/:id' => 'book#edit'
   post '/book/update/:id' => 'book#update'
   get '/book/hapus/:id' => 'book#hapus'
-  # get "logout" => "sessions#destroy", :as => "logout"
-  get "login" => "sessions#new", :as => "login"
-  # get "signup" => "users#new", :as => "signup"
+  
   root :to => "home#index"
   resources :users
-  resources :sessions
+  
   resources :password_resets
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
   get "/home", to: "home#index"
-  # root "home#index"
-
-  # root "users#new"
-  # resources :users
-
 # ----------------------------------------------------------------
 
   # halaman utama

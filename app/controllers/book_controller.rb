@@ -1,34 +1,48 @@
 class BookController < ApplicationController
     before_action :user_signed_in?
     helper_method :current_user
-  
+ 
+    # -------------------------Index------------------------------
     def index
-        @book = Book.all
+      if params[:search].blank?
+        @book = Book.paginate(:page => params[:page], per_page: 5)
+      else
+        @parameter = params[:search].downcase
+        @book = Book.where("lower(title) LIKE ?", "%#{@parameter}%").paginate(:page => params[:page], per_page: 5)
+      end
     end
-    
+
+    # -------------------------Show------------------------------
     def show
       @book = Book.find_by(id: params[:id])
     end
-    
-    def new
-      @book = Book.new
-    end
 
+    # -------------------------Detail------------------------------
     def detail
       @book = Book.find_by(id: params[:id])
     end
+
+# -------------------------Search------------------------------
+    def search
+      
+    end
+
+    # -------------------------New------------------------------
+    def new
+      @book = Book.new
+    end
     
     def create
-      @book = Book.new(title: params[:judul], author: params[:pengarang], isbn: params[:isbn], description: params[:deskripsi], category_id: params[:kategori])      
+      @book = Book.new(title: params[:title], author: params[:author], isbn: params[:isbn], description: params[:description], category_id: params[:category])      
         if @book.save
           flash[:pesan] = "Data Berhasil Disimpan !"
           redirect_to("/book/index")
         else
-          render action: 'input'
+          render action: 'new'
         end
-      end  
+    end  
       
-    
+# -------------------------Edit------------------------------   
       def edit
         @book = Book.find_by(id: params[:id])
       end
@@ -40,26 +54,16 @@ class BookController < ApplicationController
         @book.isbn = params[:isbn]
         @book.description = params[:deskripsi]
         @book.category_id = params[:category_id]
-        
-        if @book.valid?
-          @book.save
-          flash[:pesan] = "Data Berhasil Disimpan !"
-          redirect_to("/book/index")
-        else
-          render action: 'input'
-        end
-        
-        
+
         if @book.save
-          flash[:pesan] = "Data Berhasil Diupdate !"
-        return
+          flash[:pesan] = "Data Berhasil Diupdate !"  
           redirect_to("/book/index")
         else
-          flash[:pesan] = "Data Gagal Diupdate !"
-          redirect_to("/book/edit/#{@book.id}")
+          render action: 'edit'
         end
       end
     
+# -------------------------Destroy------------------------------
       def destroy
         @book = Book.find_by(id: params[:id])
         @book.destroy

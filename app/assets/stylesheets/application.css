@@ -63,6 +63,24 @@
     height: 100vh;
   }
   
+  /* ------------------tabel------------- */
+  .tabel {
+    max-width: 600px;
+    margin: -35px auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    clear: both;
+  }
+
+  .tabel a{
+    color: white;
+  }
+
+  .tabel h1{
+    color: #ff7200;
+  }
+
+  /* ---------------------------- */
   .container {
     max-width: 600px;
     margin: 60px auto;

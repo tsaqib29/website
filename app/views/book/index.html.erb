@@ -1,10 +1,19 @@
 <div class="about-main">
-    <div class="container">
+    <div class="tabel">
     <h1>Your Library</h1>
       <p><%= flash[:pesan] %></p>
-      <a href="/book/input">New Book</a>
-      &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;
+      <a href="/book/new">New Book</a>
       <a href="/category/list">Category List</a>
+
+        <%= form_tag("/book/index", :method => "get") do %>
+            <div class="input-group">
+                <%= search_field_tag :search, params[:search], placeholder: "Type", class: "form-control" %> 
+                    <div class="input-group-btn">
+                        <%= button_tag "Search for book", :class => 'btn btn-info glyphicon glyphicon-search', :name => nil %>          
+                    </div>           
+            </div>       
+        <% end %>
+
         <table border="1" width="100%" style="border-collapse: collapse;">
             <tr>
                 <th>No</th>
@@ -18,9 +27,9 @@
             </tr>
             <%
             no=0
-            @book.each do |value| %>
+            @book.each_with_index do |value, index| %>
             <tr>
-                <td><%= no=no+1 %></td>
+                <td><%= index + 1 + (@book.current_page-1)*5 %></td>
                 <td><%= value.title %></td>
                 <td><%= value.author %></td>
                 <td><%= value.isbn %></td>
@@ -35,5 +44,6 @@
             </tr>
             <%end%>
         </table>
+        <%= will_paginate @book, renderer: BootstrapPagination::Rails %>
     </div>
 </div>
