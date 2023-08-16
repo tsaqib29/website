@@ -82,3 +82,5 @@ end
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 
 gem 'ransack'
+
+gem "tailwindcss-rails", "~> 2.0"
